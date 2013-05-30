@@ -1,0 +1,99 @@
+                        NVETH (c) 2007-2010 by nickk
+                        ____________________________
+
+Wazzup
+______
+
+  This is a driver for NVIDIA family integrated LAN adapters.
+  This driver is based up linux forcedeth driver and is supposed to support the
+same scope of adapters.
+  The installation is very simple - just unpack this archive into your 
+IBMCOM\MACS directory and, mpts.exe and set up driver as any other network
+driver. Then reboot.
+
+Switches
+________
+
+There are several protocol.ini switches you can tune the driver work:
+
+MODE - the speed to work on, see nvth.nif for details
+
+OPTIMIZE - there are two modes of driver work - with throughput optimization
+  and without, which results in different set of interrupts to enable. 
+  This modes came from forcedeth linux sources and you can study the sources 
+  for more info. I do not have the hardware to test the driver, 
+  so its you to try which setting suits best for you.
+
+TIMER - nvidia adapters have special interrupt driven by its own internal timer. 
+  This switch enables or disables the use of this interrupt. 
+  Switching off the timer will reduce the number of interrupts generating by 
+  the driver thus lowering system load, but it also could increase the latency 
+  in processing the rx/tx queues. Its up to you to find out whats is the best.
+
+LINK_TIMER - if set to "YES", driver periodically queries HW chip for the 
+  actual link speed and resetup the chip according to it.
+
+RXCHAIN - the os/2 ndis drivers has two methods to pass received data to the 
+  protocol drivers (tcpip and others) - receive chain and receive lookahead. 
+  The first one should be better. This option was introduced for testing 
+  purposes, now driver seems to work fine in both ways, so you can safely 
+  leave the switch intact.
+
+Bugs
+____
+
+  You tell me. I dont even have the NVIDIA hardware ;)
+  All i know, not all PHY chips work with this driver. At least there are 
+problems with some Vitesse PHYs. 
+
+Author
+______
+  
+  Author: nickk, dev.nul@mail.ru
+
+  If you ever face the need to send bugreport to author, please, make sure
+your email provider accepts mail from mail.ru. Dont forget to include into 
+your bugreports the model of your mainboad, model of your phy chip, pci.exe
+output. If it traps, please, include trap screen. If you familiar with debug
+kernels, include also db ds:0 ldf4 and other magic output you feel will be 
+useful.
+
+Licence
+_______
+
+ Its GPL, see LICENSE
+
+Thanks
+______
+
+ Thanks to Ruediger Ihle for RM code, explanations and testing.
+ Thanks to all those brave guys who tested it.
+
+Changelog
+_________
+
+0.0.1
+  Initial release, full of bugs.
+
+0.0.2
+  nveth.sys renamed to nveth.os2.
+  Fixed bug with nforce1 adapter recognition.
+  Compatibility fix for acpi's internal oemhlp$ driver.
+  Added RM support.
+
+0.0.3
+  Added support for promiscous mode.
+
+0.0.4
+  Added extended description for switches in readme.
+  Fixed trap in OS2KRNL due to accident block during interrupt processing.
+
+0.0.5
+? Untested fix to load multiple driver instances for several nvidia NIC's on same machine.
+    Unfortunatelly, the only tester with dual nvidia nic has his MB broken 
+    (not by this driver, by screwdriver, so dont worry ;)). So i have no 
+    hardware to test it on, but i hope, you have it! Please, test and report.
+
+0.0.6
+  Added support for newer NVIDIA chipsets (MCP73, MCP77, MCP79, MCP89).
+  Added PHY initialization for some Realtek & Vitesse products.

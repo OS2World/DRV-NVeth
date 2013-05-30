@@ -1,0 +1,59 @@
+[NVETH]
+ Type       = NDIS
+ Title      = "NVIDIA MAC Driver from nickk"
+ Version    = 0.0.6
+ DriverName = NVETH$
+ XPORTS     = NETBEUI, LANDD
+
+[File]
+ Name     = NVETH.OS2
+ Path     = \IBMCOM\MACS
+
+[MODE]
+Display    = "Medium Type"
+Type       = String
+StrLength  = 10
+Set        = "10HALF", "10FULL", "100HALF", "100FULL", "1000HALF", "1000FULL"
+Optional   = Yes
+Editable   = Yes
+Help       = "This parameter specifies the link speed and connection type. 
+If not specified, it will default to autodetection."
+
+[OPTIMIZE]
+Display    = "Use throughput optimization"
+Type       = String
+Strlength  = 4
+Set        = "YES", "NO"
+Optional   = yes
+Editable   = yes
+Help       = "This parameter specifies whatever driver must fullfill throughput
+optimization"
+
+[TIMER]
+Display    = "Use HW timer"
+Type       = String
+Strlength  = 4
+Set        = "YES", "NO"
+Optional   = yes
+Editable   = yes
+Help       = "This parameter specifies whatever driver must activate NVIDIA 
+hardware IRQ timer"
+
+[LINK_TIMER]
+Display    = "Use link timer"
+Type       = String
+Strlength  = 4
+Set        = "YES", "NO"
+Optional   = yes
+Editable   = yes
+Help       = "This parameter specifies whatever driver must periodically test
+link"
+
+[RXCHAIN]
+Display    = "Use receive chain instead of receive lookahead"
+Type       = String
+Strlength  = 4
+Set        = "YES", "NO"
+Optional   = yes
+Editable   = yes
+Help       = "Use receive chain instead of receive lookahead"

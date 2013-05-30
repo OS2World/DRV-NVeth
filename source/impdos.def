@@ -1,0 +1,24 @@
+LIBRARY DOSCALLS
+
+EXPORTS
+    DOSBEEP                   @50
+    DOSCHGFILEPTR             @58
+    DOSCLOSE                  @59
+    DOSDELETE                 @60
+    DOSDEVCONFIG              @52
+    DOSDEVIOCTL               @53
+    DOSFINDCLOSE              @63
+    DOSFINDFIRST              @64
+    DOSFINDNEXT               @65
+    DOSGETENV                 @91
+    DOSGETHUGESHIFT           @41
+    DOSGETMACHINEMODE         @49
+    DOSGETVERSION             @92
+    DOSOPEN                   @70
+    DOSQCURDIR                @71
+    DOSQCURDISK               @72
+    DOSQFILEINFO              @74
+    DOSQFILEMODE              @75
+    DOSREAD                   @137
+    DOSWRITE                  @138
+    DOSIODELAYCNT             @427
